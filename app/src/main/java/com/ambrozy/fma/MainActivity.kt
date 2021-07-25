@@ -1,11 +1,8 @@
 package com.ambrozy.fma
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.ambrozy.fma.base.BaseActivity
+import com.ambrozy.fma.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-  }
-}
+@AndroidEntryPoint
+class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>(layout = R.layout.activity_main)
