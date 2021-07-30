@@ -1,7 +1,7 @@
 plugins {
   id(GradlePluginId.ANDROID_APPLICATION)
-  id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
-  id(GradlePluginId.KOTLIN_KAPT) // or kotlin("kapt")
+  id(GradlePluginId.KOTLIN_ANDROID)
+  id(GradlePluginId.KOTLIN_KAPT)
   id(GradlePluginId.KTLINT_GRADLE)
   id(GradlePluginId.SAFE_ARGS)
   id(GradlePluginId.ANDROID_JUNIT_5)
@@ -41,8 +41,10 @@ android {
       targetCompatibility = JavaVersion.VERSION_1_8
     }
   }
-  buildFeatures.viewBinding = true
-  buildFeatures.dataBinding = true
+  buildFeatures {
+    viewBinding = true
+    dataBinding = true
+  }
 
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -54,9 +56,6 @@ android {
   }
 }
 dependencies {
-  // Gradle 7 introduces version catalogs - a new way for sharing dependency versions across projects.
-  // Dependencies are defined in gradle.settings.kts file.
-  // False positive cannot access class (fixed in InteliJ IDEA 2021.1 EAP 1 afair)
   api(libs.bundles.kotlin)
   api(libs.bundles.stetho)
   api(libs.bundles.retrofit)
@@ -82,4 +81,6 @@ dependencies {
   testImplementation(libs.bundles.test)
 
   testRuntimeOnly(libs.junit.jupiter.engine)
+
+  project(":core")
 }
