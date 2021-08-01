@@ -162,4 +162,6 @@ dependencyResolutionManagement {
     }
   }
 }
-include(":core")
+include(":data")
+include(":domain")
+include(":interactors")
