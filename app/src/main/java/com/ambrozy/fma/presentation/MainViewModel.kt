@@ -1,17 +1,21 @@
 package com.ambrozy.fma.presentation
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.ambrozy.fma.base.BaseViewModel
+import com.ambrozy.interactors.usecases.GetAllRecipesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import timber.log.Timber
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor() : BaseViewModel() {
-  val text: LiveData<String> = MutableLiveData("Hello world")
+class MainViewModel @Inject constructor(getAllRecipesUseCase: GetAllRecipesUseCase) : BaseViewModel() {
+  val text: MutableLiveData<String> = MutableLiveData("Hello world")
 
   init {
-    Timber.d("MainViewModel has started!")
+    viewModelScope.launch {
+      val recipes = getAllRecipesUseCase.execute()
+      text.postValue(recipes.joinToString())
+    }
   }
 }

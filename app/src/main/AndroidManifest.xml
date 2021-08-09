@@ -3,6 +3,9 @@
   package="com.ambrozy.fma"
   >
 
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
   <application
     android:name=".FutureMindApp"
     android:icon="@mipmap/ic_launcher"
