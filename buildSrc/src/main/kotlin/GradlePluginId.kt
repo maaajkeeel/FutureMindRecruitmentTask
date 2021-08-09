@@ -2,6 +2,7 @@ object GradlePluginId {
     const val ANDROID_APPLICATION = "com.android.application"
     const val ANDROID_LIBRARY = "com.android.library"
     const val KOTLIN_ANDROID = "org.jetbrains.kotlin.android"
+//    const val ANDROID_EXTENSION = "org.jetbrains.kotlin:android-extensions"
     const val KOTLIN_KAPT = "org.jetbrains.kotlin.kapt"
     const val SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
     const val DETEKT = "io.gitlab.arturbosch.detekt"

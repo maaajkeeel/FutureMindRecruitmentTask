@@ -1,4 +1,4 @@
-package com.ambrozy.data.recipes.network.datasources
+package com.ambrozy.datasources
 
 import com.ambrozy.domain.RecipeEntity
 

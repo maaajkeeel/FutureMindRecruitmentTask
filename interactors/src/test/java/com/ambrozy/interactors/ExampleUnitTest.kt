@@ -1,4 +1,4 @@
-package com.ambrozy.interactorss
+package com.ambrozy.interactors
 
 import org.junit.Test
 

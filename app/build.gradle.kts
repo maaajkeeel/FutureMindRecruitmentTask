@@ -76,7 +76,6 @@ dependencies {
   api(libs.coroutines)
   api(libs.joda)
   api(libs.hilt.android)
-  implementation(project(mapOf("path" to ":interactors")))
 
   kapt(libs.room.compiler)
   kapt(libs.hilt.compiler)
@@ -85,6 +84,7 @@ dependencies {
 
   testRuntimeOnly(libs.junit.jupiter.engine)
 
-  project(":data")
-  project(":domain")
+  implementation(project(":data"))
+  implementation(project(":domain"))
+  implementation(project(":interactors"))
 }
