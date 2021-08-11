@@ -76,6 +76,7 @@ dependencies {
   api(libs.coroutines)
   api(libs.joda)
   api(libs.hilt.android)
+  api(libs.bundles.bindingLib)
 
   kapt(libs.room.compiler)
   kapt(libs.hilt.compiler)
@@ -87,4 +88,5 @@ dependencies {
   implementation(project(":data"))
   implementation(project(":domain"))
   implementation(project(":interactors"))
+  implementation(project(":ui"))
 }

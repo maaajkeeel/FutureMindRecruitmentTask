@@ -90,6 +90,9 @@ dependencyResolutionManagement {
       alias("okhttp-interceptor").to("com.squareup.okhttp3", "logging-interceptor").versionRef("okhttp")
       bundle("okhttp", listOf("okhttp-okhttp", "okhttp-interceptor"))
 
+      version("glideVersion", "4.+")
+      alias("glideLib").to("com.github.bumptech.glide", "glide").versionRef("glideVersion")
+      alias("glideCompiler").to("com.github.bumptech.glide", "compiler").versionRef("glideVersion")
 
       version("stetho", "1.5.0")
       alias("stetho-core").to("com.facebook.stetho", "stetho").versionRef("stetho")
@@ -100,6 +103,7 @@ dependencyResolutionManagement {
       alias("joda").to("net.danlew:android.joda:2.+")
       alias("constraintlayout").to("androidx.constraintlayout:constraintlayout:2.+")
       alias("coordinatorlayout").to("androidx.coordinatorlayout:coordinatorlayout:1.+")
+      alias("cardview").to("androidx.cardview:cardview:1.+")
       alias("appcompat").to("androidx.appcompat:appcompat:1.+")
       alias("recyclerview").to("androidx.recyclerview:recyclerview:1.+")
       alias("material").to("com.google.android.material:material:1.+")
@@ -108,6 +112,11 @@ dependencyResolutionManagement {
       alias("core-ktx").to("androidx.core:core-ktx:1.+")
       alias("fragment-ktx").to("androidx.fragment:fragment-ktx:1.+")
       bundle("ktx", listOf("core-ktx", "fragment-ktx"))
+
+      version("bindingLibVersion", "4.+")
+      alias("bindingBase").to("me.tatarka.bindingcollectionadapter2","bindingcollectionadapter").versionRef("bindingLibVersion")
+      alias("bindingRecyclerView").to("me.tatarka.bindingcollectionadapter2","bindingcollectionadapter-recyclerview").versionRef("bindingLibVersion")
+      bundle("bindingLib", listOf("bindingBase", "bindingRecyclerView"))
 
       version("lifecycle", "2.+")
       alias("viewmodel-ktx").to("androidx.lifecycle", "lifecycle-viewmodel-ktx").versionRef("lifecycle")
@@ -165,3 +174,4 @@ dependencyResolutionManagement {
 include(":data")
 include(":domain")
 include(":interactors")
+include(":ui")
