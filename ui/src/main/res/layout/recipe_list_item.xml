@@ -4,36 +4,71 @@
   xmlns:tools="http://schemas.android.com/tools"
   >
   <androidx.cardview.widget.CardView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="@dimen/half_default_margin"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
     android:elevation="@dimen/default_stroke"
-    app:cardBackgroundColor="@color/cobalt"
     app:cardCornerRadius="@dimen/default_radius"
-    app:cardElevation="@dimen/default_margin"
+    app:cardElevation="@dimen/margin_m"
     app:cardPreventCornerOverlap="true"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:background="@drawable/gradient_background"
       android:padding="@dimen/normal_padding"
       >
 
-      <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
+      <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.3"
+        />
+
+      <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_s"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialTextView"
+        >
+        <com.google.android.material.textview.MaterialTextView
+          android:id="@+id/materialTextView2"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:ellipsize="end"
+          android:text="@{recipeDisplayable.description}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/materialTextView"
+          tools:text="Description description"
+          />
+      </androidx.core.widget.NestedScrollView>
+
+      <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
         app:imageUrl="@{recipeDisplayable.imageUrl}"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.Rounded.All.10Percent"
+        tools:srcCompat="@drawable/cadillac"
         />
-
       <com.google.android.material.textview.MaterialTextView
         android:id="@+id/materialTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:ellipsize="end"
         android:gravity="center"
         android:maxLines="2"
         android:text="@{recipeDisplayable.title}"
@@ -41,22 +76,9 @@
         android:textAppearance="@style/Text.H4.Bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/guideline6"
         tools:text="The title"
         />
-
-      <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@{recipeDisplayable.description}"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialTextView"
-        tools:text="Description description"
-        />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
   </androidx.cardview.widget.CardView>
   <data>
