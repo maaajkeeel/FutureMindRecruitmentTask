@@ -82,6 +82,7 @@ dependencyResolutionManagement {
       alias("converter-moshi").to("com.squareup.retrofit2", "converter-moshi").versionRef("retrofit")
       bundle("retrofit", listOf("retrofit-core", "converter-moshi"))
 
+      alias("moshi").to("com.squareup.moshi:moshi:1.12.0")
       alias("moshiCodegen").to("com.squareup.moshi:moshi-kotlin-codegen:1.12.0")
       alias("autoService").to("com.google.auto.service:auto-service-annotations:1.0")
 
@@ -90,9 +91,7 @@ dependencyResolutionManagement {
       alias("okhttp-interceptor").to("com.squareup.okhttp3", "logging-interceptor").versionRef("okhttp")
       bundle("okhttp", listOf("okhttp-okhttp", "okhttp-interceptor"))
 
-      version("glideVersion", "4.+")
-      alias("glideLib").to("com.github.bumptech.glide", "glide").versionRef("glideVersion")
-      alias("glideCompiler").to("com.github.bumptech.glide", "compiler").versionRef("glideVersion")
+      alias("picasso").to("com.squareup.picasso:picasso:2.+")
 
       version("stetho", "1.5.0")
       alias("stetho-core").to("com.facebook.stetho", "stetho").versionRef("stetho")

@@ -77,9 +77,11 @@ dependencies {
   api(libs.joda)
   api(libs.hilt.android)
   api(libs.bundles.bindingLib)
+  api(libs.moshi)
 
   kapt(libs.room.compiler)
   kapt(libs.hilt.compiler)
+  kapt(libs.moshiCodegen)
 
   testImplementation(libs.bundles.test)
 

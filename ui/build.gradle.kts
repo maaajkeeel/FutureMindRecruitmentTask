@@ -55,7 +55,6 @@ dependencies {
   api(libs.appcompat)
   api(libs.recyclerview)
   api(libs.material)
-  api(libs.glideLib)
+  api(libs.picasso)
   api(libs.bundles.bindingLib)
-  annotationProcessor(libs.glideCompiler)
 }

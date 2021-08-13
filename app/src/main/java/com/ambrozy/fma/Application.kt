@@ -1,6 +1,8 @@
 package com.ambrozy.fma
 
 import android.app.Application
+import androidx.databinding.DataBindingUtil
+import com.ambrozy.fma.presentation.DataBindingComponents
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
@@ -9,6 +11,6 @@ class FutureMindApp : Application() {
   override fun onCreate() {
     super.onCreate()
     Timber.plant(Timber.DebugTree())
-    Timber.d("BLA BLA BLA IN ONCREATE APPLICATION")
+    DataBindingUtil.setDefaultComponent(DataBindingComponents())
   }
 }

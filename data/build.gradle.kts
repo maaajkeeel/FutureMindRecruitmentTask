@@ -69,9 +69,11 @@ dependencies {
   api(libs.coroutines)
   api(libs.joda)
   api(libs.hilt.android)
+  api(libs.moshi)
 
   kapt(libs.room.compiler)
   kapt(libs.hilt.compiler)
+  kapt(libs.moshiCodegen)
 
   testImplementation(libs.bundles.test)
 

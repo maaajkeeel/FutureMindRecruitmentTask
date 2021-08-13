@@ -17,20 +17,15 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(getAllRecipesUseCase: GetAllRecipesUseCase) : BaseViewModel() {
   val text: MutableLiveData<String> = MutableLiveData("Hello world")
   val recipeDisplayables: MutableLiveData<List<RecipeDisplayable>> = MutableLiveData(emptyList())
-  val recipeDisplayablesL: List<RecipeDisplayable> = listOf(
-    RecipeDisplayable("TheTitle", "TheDescription", "", ""),
-    RecipeDisplayable("TheTitle", "TheDescription", "", ""),
-    RecipeDisplayable("TheTitle", "TheDescription", "", ""),
-    RecipeDisplayable("TheTitle", "TheDescription", "", ""),
-    RecipeDisplayable("TheTitle", "TheDescription", "", ""),
-    RecipeDisplayable("TheTitle", "TheDescription", "", ""),
-  )
   val recipeListBinding = ItemBinding.of<RecipeDisplayable>(BR.recipeDisplayable, R.layout.recipe_list_item)
 
   init {
     viewModelScope.launch {
       val recipes = getAllRecipesUseCase.execute()
       recipeDisplayables.postValue(recipes.map {
+        if (it.imageUrl.isNotEmpty()) {
+          Timber.d("Image url ${it.imageUrl}")
+        }
         RecipeDisplayable(
           it.title,
           it.description,
