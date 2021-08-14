@@ -23,7 +23,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.3"
+        app:layout_constraintGuide_percent="0.5"
         />
 
       <androidx.core.widget.NestedScrollView
@@ -67,7 +67,7 @@
         android:id="@+id/materialTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginTop="@dimen/margin_m"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="2"

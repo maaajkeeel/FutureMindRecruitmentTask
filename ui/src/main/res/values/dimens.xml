@@ -4,6 +4,7 @@
   <dimen name="default_stroke">1dp</dimen>
   <dimen name="normal_padding">10dp</dimen>
   <dimen name="margin_xl">32dp</dimen>
+  <dimen name="margin_l">24dp</dimen>
   <dimen name="margin_m">16dp</dimen>
   <dimen name="margin_s">8dp</dimen>
 
