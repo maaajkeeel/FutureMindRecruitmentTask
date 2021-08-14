@@ -5,5 +5,6 @@ data class RecipeEntity(
   val imageUrl: String,
   val modificationDate: String,
   val orderId: Int,
-  val title: String
+  val title: String,
+  val redirectionLink: String
 )
