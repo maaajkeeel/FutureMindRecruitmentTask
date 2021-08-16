@@ -1,5 +1,9 @@
 package com.ambrozy.ui.bindings
 
+import android.webkit.WebChromeClient
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -32,5 +36,23 @@ class RecyclerViewBindings {
     if (attach) {
       LinearSnapHelper().attachToRecyclerView(this)
     }
+  }
+}
+
+class WebViewBindings() {
+  @BindingAdapter("enableJS")
+  fun WebView.bindEnableJs(enable: Boolean) {
+    settings.javaScriptEnabled = enable
+  }
+
+  @BindingAdapter("preventRedirections")
+  fun WebView.bindPreventRedirections(prevent: Boolean) {
+    webViewClient = object : WebViewClient() {
+      override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+        loadUrl(request?.url.toString())
+        return false
+      }
+    }
+    webChromeClient = WebChromeClient()
   }
 }

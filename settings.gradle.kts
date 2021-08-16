@@ -113,15 +113,18 @@ dependencyResolutionManagement {
       bundle("ktx", listOf("core-ktx", "fragment-ktx"))
 
       version("bindingLibVersion", "4.+")
-      alias("bindingBase").to("me.tatarka.bindingcollectionadapter2","bindingcollectionadapter").versionRef("bindingLibVersion")
-      alias("bindingRecyclerView").to("me.tatarka.bindingcollectionadapter2","bindingcollectionadapter-recyclerview").versionRef("bindingLibVersion")
+      alias("bindingBase").to("me.tatarka.bindingcollectionadapter2", "bindingcollectionadapter")
+        .versionRef("bindingLibVersion")
+      alias("bindingRecyclerView").to("me.tatarka.bindingcollectionadapter2", "bindingcollectionadapter-recyclerview")
+        .versionRef("bindingLibVersion")
       bundle("bindingLib", listOf("bindingBase", "bindingRecyclerView"))
 
-      version("lifecycle", "2.+")
+      version("lifecycle", "2.4.0-alpha03")
       alias("viewmodel-ktx").to("androidx.lifecycle", "lifecycle-viewmodel-ktx").versionRef("lifecycle")
       alias("livedata-ktx").to("androidx.lifecycle", "lifecycle-livedata-ktx").versionRef("lifecycle")
       alias("lifecycle-common").to("androidx.lifecycle", "lifecycle-common-java8").versionRef("lifecycle")
-      bundle("lifecycle", listOf("viewmodel-ktx", "livedata-ktx", "lifecycle-common"))
+      alias("lifecycle-ktx").to("androidx.lifecycle", "lifecycle-runtime-ktx").versionRef("lifecycle")
+      bundle("lifecycle", listOf("viewmodel-ktx", "livedata-ktx", "lifecycle-common", "lifecycle-ktx"))
 
       val navigationVersion: String by settings
       version("navigation", navigationVersion)

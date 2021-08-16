@@ -7,8 +7,23 @@
   >
   <fragment
     android:id="@+id/MainFragment"
-    android:name="com.ambrozy.fma.presentation.MainFragment"
+    android:name="com.ambrozy.fma.presentation.main.MainFragment"
     tools:layout="@layout/main_fragment_layout"
-    />
-
+    >
+    <action
+      android:id="@+id/openRedirectionFragment"
+      app:destination="@id/RedirectionFragment"
+      />
+  </fragment>
+  <fragment
+    android:id="@+id/RedirectionFragment"
+    android:name="com.ambrozy.fma.presentation.redirection.RedirectionFragment"
+    tools:layout="@layout/redirection_fragment_layout"
+    >
+    <argument
+      android:name="redirectionLink"
+      app:argType="string"
+      app:nullable="false"
+      />
+  </fragment>
 </navigation>
