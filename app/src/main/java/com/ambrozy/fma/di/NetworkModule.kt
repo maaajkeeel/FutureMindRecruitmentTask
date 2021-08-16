@@ -22,6 +22,10 @@ import javax.inject.Singleton
 @Retention(AnnotationRetention.BINARY)
 annotation class ApiUrl
 
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class MoshiConverter
+
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
@@ -33,6 +37,7 @@ class NetworkModule {
 
   @Singleton
   @Provides
+  @MoshiConverter
   fun provideMoshiConverterFactory(moshi: Moshi): Converter.Factory =
     MoshiConverterFactory.create(moshi)
 
@@ -69,7 +74,7 @@ class NetworkModule {
   @Singleton
   @Provides
   fun providesDefaultRetrofit(
-    converterFactory: Converter.Factory,
+    @MoshiConverter converterFactory: Converter.Factory,
     client: OkHttpClient,
     @ApiUrl apiUrl: HttpUrl
   ): Retrofit {

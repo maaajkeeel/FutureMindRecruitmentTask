@@ -8,7 +8,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.ambrozy.fma.BR
 
-abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel>
+abstract class BaseActivity<VDB : ViewDataBinding, T : BaseEvent, VM : BaseViewModel<T>>
   (@LayoutRes private val layout: Int, private val viewModelClass: Class<VM>) : AppCompatActivity() {
   val viewModel: VM by lazy {
     ViewModelProvider(this).get(viewModelClass)

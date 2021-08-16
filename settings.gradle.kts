@@ -82,6 +82,7 @@ dependencyResolutionManagement {
       alias("converter-moshi").to("com.squareup.retrofit2", "converter-moshi").versionRef("retrofit")
       bundle("retrofit", listOf("retrofit-core", "converter-moshi"))
 
+      alias("moshi").to("com.squareup.moshi:moshi:1.12.0")
       alias("moshiCodegen").to("com.squareup.moshi:moshi-kotlin-codegen:1.12.0")
       alias("autoService").to("com.google.auto.service:auto-service-annotations:1.0")
 
@@ -90,6 +91,7 @@ dependencyResolutionManagement {
       alias("okhttp-interceptor").to("com.squareup.okhttp3", "logging-interceptor").versionRef("okhttp")
       bundle("okhttp", listOf("okhttp-okhttp", "okhttp-interceptor"))
 
+      alias("picasso").to("com.squareup.picasso:picasso:2.+")
 
       version("stetho", "1.5.0")
       alias("stetho-core").to("com.facebook.stetho", "stetho").versionRef("stetho")
@@ -100,6 +102,7 @@ dependencyResolutionManagement {
       alias("joda").to("net.danlew:android.joda:2.+")
       alias("constraintlayout").to("androidx.constraintlayout:constraintlayout:2.+")
       alias("coordinatorlayout").to("androidx.coordinatorlayout:coordinatorlayout:1.+")
+      alias("cardview").to("androidx.cardview:cardview:1.+")
       alias("appcompat").to("androidx.appcompat:appcompat:1.+")
       alias("recyclerview").to("androidx.recyclerview:recyclerview:1.+")
       alias("material").to("com.google.android.material:material:1.+")
@@ -109,11 +112,19 @@ dependencyResolutionManagement {
       alias("fragment-ktx").to("androidx.fragment:fragment-ktx:1.+")
       bundle("ktx", listOf("core-ktx", "fragment-ktx"))
 
-      version("lifecycle", "2.+")
+      version("bindingLibVersion", "4.+")
+      alias("bindingBase").to("me.tatarka.bindingcollectionadapter2", "bindingcollectionadapter")
+        .versionRef("bindingLibVersion")
+      alias("bindingRecyclerView").to("me.tatarka.bindingcollectionadapter2", "bindingcollectionadapter-recyclerview")
+        .versionRef("bindingLibVersion")
+      bundle("bindingLib", listOf("bindingBase", "bindingRecyclerView"))
+
+      version("lifecycle", "2.4.0-alpha03")
       alias("viewmodel-ktx").to("androidx.lifecycle", "lifecycle-viewmodel-ktx").versionRef("lifecycle")
       alias("livedata-ktx").to("androidx.lifecycle", "lifecycle-livedata-ktx").versionRef("lifecycle")
       alias("lifecycle-common").to("androidx.lifecycle", "lifecycle-common-java8").versionRef("lifecycle")
-      bundle("lifecycle", listOf("viewmodel-ktx", "livedata-ktx", "lifecycle-common"))
+      alias("lifecycle-ktx").to("androidx.lifecycle", "lifecycle-runtime-ktx").versionRef("lifecycle")
+      bundle("lifecycle", listOf("viewmodel-ktx", "livedata-ktx", "lifecycle-common", "lifecycle-ktx"))
 
       val navigationVersion: String by settings
       version("navigation", navigationVersion)
@@ -165,3 +176,4 @@ dependencyResolutionManagement {
 include(":data")
 include(":domain")
 include(":interactors")
+include(":ui")

@@ -1,26 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   >
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <com.google.android.material.textview.MaterialTextView
+    <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline3"
+      android:orientation="horizontal"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@{viewModel.text}"
+      app:layout_constraintGuide_percent=".3"
+      />
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView"
+      android:orientation="horizontal"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginBottom="@dimen/margin_xl"
+      app:attachSnapHelper="@{true}"
+      app:decoratorHorizontalMargin="@{@dimen/margin_s}"
+      app:decoratorVerticalMargin="@{0}"
+      app:itemBinding="@{viewModel.recipeListBinding}"
+      app:items="@{viewModel.recipeDisplayables}"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guideline3"
+      app:orientationHorizontal="@{false}"
+      tools:listitem="@layout/recipe_list_item"
+      />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin_s"
+      android:contentDescription="@null"
+      app:backgroundTint="@color/colorOnAccent"
+      app:iconTint="@color/colorPrimaryDark"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:srcCompat="@drawable/ic_baseline_refresh"
       />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
   <data>
     <variable
       name="viewModel"
-      type="com.ambrozy.fma.presentation.MainViewModel"
+      type="com.ambrozy.fma.presentation.main.MainViewModel"
       />
   </data>
 </layout>
