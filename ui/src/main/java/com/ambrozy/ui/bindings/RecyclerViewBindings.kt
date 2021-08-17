@@ -5,10 +5,12 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.ambrozy.ui.views.ItemDecorator
+import org.joda.time.DateTime
 
 class RecyclerViewBindings {
   @BindingAdapter(
@@ -54,5 +56,16 @@ class WebViewBindings() {
       }
     }
     webChromeClient = WebChromeClient()
+  }
+}
+
+class TextViewBindings() {
+  @BindingAdapter("date")
+  fun TextView.bindDate(date: Long) {
+    text = DateTime(date).toString(DATE_TIME_PATTERN)
+  }
+
+  companion object {
+    const val DATE_TIME_PATTERN = "dd.MM.yyyy"
   }
 }
