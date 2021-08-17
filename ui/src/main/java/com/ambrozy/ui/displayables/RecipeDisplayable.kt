@@ -3,7 +3,7 @@ package com.ambrozy.ui.displayables
 data class RecipeDisplayable(
   val title: String,
   val description: String,
-  val modificationDate: String,
+  val modificationDate: Long,
   val imageUrl: String,
   val redirectionLink: String
 )

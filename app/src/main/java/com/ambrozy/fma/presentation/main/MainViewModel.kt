@@ -33,11 +33,11 @@ class MainViewModel @Inject constructor(getAllRecipesUseCase: GetAllRecipesUseCa
       val recipes = getAllRecipesUseCase.execute()
       recipeDisplayables.postValue(recipes.map {
         RecipeDisplayable(
-          it.title,
-          it.description,
-          it.modificationDate,
-          it.imageUrl,
-          it.redirectionLink
+          title = it.title,
+          description = it.description,
+          modificationDate = it.modificationDate,
+          imageUrl = it.imageUrl,
+          redirectionLink = it.redirectionLink
         )
       }
       )

@@ -2,7 +2,7 @@ plugins {
   id(GradlePluginId.ANDROID_LIBRARY)
   id(GradlePluginId.KOTLIN_ANDROID)
   id(GradlePluginId.KOTLIN_KAPT)
-  id("org.jetbrains.kotlin.android.extensions")
+  kotlin(GradlePluginId.ANDROID_EXTENSION)
 }
 
 android {
@@ -57,4 +57,5 @@ dependencies {
   api(libs.material)
   api(libs.picasso)
   api(libs.bundles.bindingLib)
+  api(libs.joda)
 }

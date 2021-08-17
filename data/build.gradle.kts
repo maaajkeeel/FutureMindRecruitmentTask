@@ -6,7 +6,7 @@ plugins {
   id(GradlePluginId.ANDROID_JUNIT_5)
   id(GradlePluginId.KOTLIN_KAPT)
   id(GradlePluginId.HILT)
-  id("org.jetbrains.kotlin.android.extensions")
+  kotlin(GradlePluginId.ANDROID_EXTENSION)
 }
 
 android {

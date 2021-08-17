@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.databinding.DataBindingUtil
 import com.ambrozy.fma.presentation.DataBindingComponents
 import dagger.hilt.android.HiltAndroidApp
+import net.danlew.android.joda.JodaTimeInitializer
 import timber.log.Timber
 
 @HiltAndroidApp
@@ -12,5 +13,6 @@ class FutureMindApp : Application() {
     super.onCreate()
     Timber.plant(Timber.DebugTree())
     DataBindingUtil.setDefaultComponent(DataBindingComponents())
+    JodaTimeInitializer()
   }
 }
