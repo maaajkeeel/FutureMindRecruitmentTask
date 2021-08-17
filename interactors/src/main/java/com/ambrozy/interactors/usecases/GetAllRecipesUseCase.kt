@@ -5,7 +5,7 @@ import com.ambrozy.domain.RecipeEntity
 import javax.inject.Inject
 
 class GetAllRecipesUseCase @Inject constructor(private val repository: RecipesRepository) {
-  suspend fun execute(): List<RecipeEntity> {
-    return repository.getAll()
+  suspend fun execute(refresh: Boolean = false): List<RecipeEntity> {
+    return repository.getAll(refresh)
   }
 }

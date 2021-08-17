@@ -1,6 +1,7 @@
 package com.ambrozy.fma.presentation
 
 import androidx.databinding.DataBindingComponent
+import com.ambrozy.ui.bindings.BasicBindings
 import com.ambrozy.ui.bindings.ImageViewBindings
 import com.ambrozy.ui.bindings.RecyclerViewBindings
 import com.ambrozy.ui.bindings.TextViewBindings
@@ -11,4 +12,5 @@ class DataBindingComponents : DataBindingComponent {
   override fun getImageViewBindings(): ImageViewBindings = ImageViewBindings()
   override fun getRecyclerViewBindings(): RecyclerViewBindings = RecyclerViewBindings()
   override fun getTextViewBindings(): TextViewBindings = TextViewBindings()
+  override fun getBasicBindings(): BasicBindings = BasicBindings()
 }

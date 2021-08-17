@@ -10,6 +10,7 @@
     app:cardCornerRadius="@dimen/default_radius"
     app:cardElevation="@dimen/margin_m"
     app:cardPreventCornerOverlap="true"
+    android:onClick="@{()->clickHandler.click(recipeDisplayable)}"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
@@ -43,6 +44,7 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:ellipsize="end"
+          android:onClick="@{()->clickHandler.click(recipeDisplayable)}"
           android:text="@{recipeDisplayable.description}"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"

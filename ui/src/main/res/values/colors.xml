@@ -6,6 +6,7 @@
   <color name="colorOnAccent">#F56C3D</color>
   <color name="colorError">#C21D31</color>
   <color name="transparent">#00000000</color>
+  <color name="white_half">#80FFFFFF</color>
 
   <color name="white">#FFF</color>
   <color name="cobalt">#0A26C2</color>
