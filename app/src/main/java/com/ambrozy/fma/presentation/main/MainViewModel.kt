@@ -45,13 +45,23 @@ class MainViewModel @Inject constructor(
   }
 
   private suspend fun getRecipes(refresh: Boolean = false): List<RecipeEntity> {
-    return getAllRecipesUseCase.execute(refresh).sortedBy { it.orderId }
+    val result = getAllRecipesUseCase
+      .execute(refresh)
+    result.onSuccess { recipes ->
+      return recipes.sortedBy { it.orderId }
+    }
+      .onFailure {
+        it.message?.let { eventChannel.send(Event.ShowToast(it)) }
+      }
+    return emptyList()
   }
 
   private fun attachRecipes(recipes: List<RecipeEntity>) {
-    recipeDisplayables.postValue(
-      recipes.mapAll(recipeEntityToDisplayableMapper)
-    )
+    recipes.takeIf { it.isNotEmpty() }?.let { recipes ->
+      recipeDisplayables.postValue(
+        recipes.mapAll(recipeEntityToDisplayableMapper)
+      )
+    }
   }
 
   fun refreshClicked() {
