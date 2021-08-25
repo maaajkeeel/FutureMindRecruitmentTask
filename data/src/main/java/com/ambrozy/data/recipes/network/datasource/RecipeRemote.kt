@@ -1,4 +1,4 @@
-package com.ambrozy.data.recipes.network.datasources
+package com.ambrozy.data.recipes.network.datasource
 
 import com.ambrozy.data.base.mapAll
 import com.ambrozy.data.recipes.network.apis.RecipesApi

@@ -4,6 +4,7 @@ import androidx.navigation.fragment.findNavController
 import com.ambrozy.fma.R
 import com.ambrozy.fma.base.BaseFragment
 import com.ambrozy.fma.databinding.MainFragmentLayoutBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,7 +19,8 @@ class MainFragment :
       is Event.NavigateToWebViewScreen -> {
         findNavController().navigate(MainFragmentDirections.openRedirectionFragment(event.redirectionLink))
       }
-      else -> {
+      is Event.ShowToast -> {
+        Snackbar.make(this.requireView(), event.text, Snackbar.LENGTH_SHORT).show()
       }
     }
   }

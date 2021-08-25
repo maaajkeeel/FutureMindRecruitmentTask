@@ -1,5 +1,8 @@
 package com.ambrozy.ui.bindings
 
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -67,5 +70,12 @@ class TextViewBindings() {
 
   companion object {
     const val DATE_TIME_PATTERN = "dd.MM.yyyy"
+  }
+}
+
+class BasicBindings() {
+  @BindingAdapter("visible")
+  fun View.bindVisible(visible: Boolean) {
+    visibility = VISIBLE.takeIf { visible } ?: GONE
   }
 }
