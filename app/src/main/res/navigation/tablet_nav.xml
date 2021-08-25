@@ -9,6 +9,7 @@
   <action
     android:id="@+id/openRedirectionFragment"
     app:destination="@id/RedirectionFragment"
+    app:launchSingleTop="true"
     />
 
   <fragment
