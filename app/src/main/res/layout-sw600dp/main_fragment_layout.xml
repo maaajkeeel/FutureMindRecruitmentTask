@@ -30,35 +30,39 @@
 
     </FrameLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-      android:id="@+id/guideline3"
-      android:orientation="horizontal"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:layout_constraintGuide_percent=".2"
+
+    <androidx.fragment.app.FragmentContainerView
+      android:id="@+id/tabletContainerView"
+      android:name="androidx.navigation.fragment.NavHostFragment"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:defaultNavHost="false"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/recyclerView"
+      app:layout_constraintTop_toTopOf="parent"
+      app:navGraph="@navigation/tablet_nav"
       />
 
     <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recyclerView"
-      android:orientation="horizontal"
-      android:layout_width="0dp"
+      android:orientation="vertical"
+      android:layout_width="wrap_content"
       android:layout_height="0dp"
-      android:layout_marginBottom="@dimen/margin_xl"
       app:attachSnapHelper="@{true}"
-      app:decoratorHorizontalMargin="@{@dimen/margin_s}"
-      app:decoratorVerticalMargin="@{0}"
+      app:decoratorHorizontalMargin="@{0}"
+      app:decoratorVerticalMargin="@{@dimen/margin_s}"
       app:itemBinding="@{viewModel.recipeListBinding}"
       app:items="@{viewModel.recipeDisplayables}"
       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guideline3"
+      app:layout_constraintTop_toTopOf="parent"
       app:orientationHorizontal="@{false}"
       tools:listitem="@layout/recipe_list_item"
       />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:id="@+id/floatingActionButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_margin="@dimen/margin_s"
@@ -71,7 +75,6 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:srcCompat="@drawable/ic_baseline_refresh"
       />
-
   </androidx.constraintlayout.widget.ConstraintLayout>
   <data>
     <variable
