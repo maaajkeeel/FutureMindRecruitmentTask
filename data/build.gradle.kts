@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 plugins {
   id(GradlePluginId.ANDROID_LIBRARY)
   id(GradlePluginId.KOTLIN_ANDROID)
-  id(GradlePluginId.ANDROID_JUNIT_5)
   id(GradlePluginId.KOTLIN_KAPT)
   id(GradlePluginId.HILT)
   kotlin(GradlePluginId.ANDROID_EXTENSION)

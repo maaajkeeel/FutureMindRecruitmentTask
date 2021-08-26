@@ -30,9 +30,6 @@ pluginManagement {
     val ktlintVersion: String by settings
     id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
 
-    val androidJUnit5Version: String by settings
-    id("de.mannodermaus.android-junit5") version androidJUnit5Version
-
     val hiltVersion: String by settings
     id("dagger.hilt.android.plugin") version hiltVersion
   }
@@ -50,10 +47,6 @@ pluginManagement {
         "androidx.navigation.safeargs.kotlin" -> {
           val navigationCoordinates: String by settings
           useModule(navigationCoordinates)
-        }
-        "de.mannodermaus.android-junit5" -> {
-          val androidJnit5Coordinates: String by settings
-          useModule(androidJnit5Coordinates) // navigationVersion
         }
         "dagger.hilt.android.plugin" -> {
           val hiltCoordinates: String by settings
@@ -109,7 +102,7 @@ dependencyResolutionManagement {
       alias("play-core").to("com.google.android.play:core:1.+")
 
       alias("core-ktx").to("androidx.core:core-ktx:1.+")
-      alias("fragment-ktx").to("androidx.fragment:fragment-ktx:1.+")
+      alias("fragment-ktx").to("androidx.fragment:fragment-ktx:1.3.+")
       bundle("ktx", listOf("core-ktx", "fragment-ktx"))
 
       version("bindingLibVersion", "4.+")
@@ -154,8 +147,14 @@ dependencyResolutionManagement {
       alias("mockk").to("io.mockk:mockk:1.+")
       alias("arch").to("androidx.arch.core:core-testing:2.+")
 
-      version("junit", "5.+")
-      alias("junit-jupiter-api").to("org.junit.jupiter", "junit-jupiter-api").versionRef("junit")
+      version("junit", "5.7.+")
+      alias("junitJupiter").to("org.junit.jupiter", "junit-jupiter").versionRef("junit")
+
+
+      version("kotest", "4.+")
+      alias("kotestRunner").to("io.kotest", "kotest-runner-junit5-jvm").versionRef("kotest")
+      alias("kotestAssertion").to("io.kotest", "kotest-assertions-core-jvm").versionRef("kotest")
+      alias("kotestProperty").to("io.kotest", "kotest-property-jvm").versionRef("kotest")
 
       bundle(
         "test",
@@ -165,7 +164,7 @@ dependencyResolutionManagement {
           "espresso",
           "mockk",
           "arch",
-          "junit-jupiter-api"
+          "junitJupiter"
         )
       )
 

@@ -1,10 +1,9 @@
 plugins {
   id(GradlePluginId.ANDROID_LIBRARY)
   id(GradlePluginId.KOTLIN_ANDROID)
-  id(GradlePluginId.ANDROID_JUNIT_5)
   id(GradlePluginId.KOTLIN_KAPT)
   id(GradlePluginId.HILT)
-  id("org.jetbrains.kotlin.android.extensions")
+  kotlin(GradlePluginId.ANDROID_EXTENSION)
 }
 
 android {
@@ -39,9 +38,10 @@ android {
   }
 
   packagingOptions {
-    // May not be needed after updating to AGP 4.x - check
     exclude("META-INF/AL2.0")
     exclude("META-INF/LGPL2.1")
+    exclude("META-INF/LICENSE")
+    exclude("META-INF/LICENSE-notice")
   }
 }
 
