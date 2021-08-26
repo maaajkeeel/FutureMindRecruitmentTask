@@ -4,7 +4,6 @@ plugins {
   id(GradlePluginId.KOTLIN_KAPT)
   id(GradlePluginId.KTLINT_GRADLE)
   id(GradlePluginId.SAFE_ARGS)
-  id(GradlePluginId.ANDROID_JUNIT_5)
   id(GradlePluginId.HILT)
 }
 
@@ -53,10 +52,20 @@ android {
     targetCompatibility = JavaVersion.VERSION_1_8
   }
 
+  packagingOptions {
+    exclude("META-INF/*")
+  }
+
   kotlinOptions {
     jvmTarget = JavaVersion.VERSION_1_8.toString()
   }
+  testOptions {
+    unitTests.all {
+      it.useJUnitPlatform()
+    }
+  }
 }
+
 dependencies {
   api(libs.bundles.kotlin)
   api(libs.bundles.stetho)
@@ -84,7 +93,7 @@ dependencies {
   kapt(libs.moshiCodegen)
 
   testImplementation(libs.bundles.test)
-
+  implementation(libs.kotestRunner)
   testRuntimeOnly(libs.junit.jupiter.engine)
 
   implementation(project(":data"))

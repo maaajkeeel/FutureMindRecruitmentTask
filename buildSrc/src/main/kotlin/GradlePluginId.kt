@@ -8,5 +8,4 @@ object GradlePluginId {
     const val DETEKT = "io.gitlab.arturbosch.detekt"
     const val HILT = "dagger.hilt.android.plugin"
     const val KTLINT_GRADLE = "org.jlleitschuh.gradle.ktlint"
-    const val ANDROID_JUNIT_5 = "de.mannodermaus.android-junit5"
 }
