@@ -5,7 +5,7 @@ object AndroidConfig {
   const val BUILD_TOOLS_VERSION = "30.0.2"
 
   const val VERSION_CODE = 1
-  const val VERSION_NAME = "1.0"
+  const val VERSION_NAME = "0.0.1"
 
   const val ID = "com.ambrozy.fmrecruitmenttask"
   const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
