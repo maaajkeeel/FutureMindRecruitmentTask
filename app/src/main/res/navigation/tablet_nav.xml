@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/tablet_nav"
+  app:startDestination="@id/RedirectionFragment"
+  >
+
+  <action
+    android:id="@+id/openRedirectionFragment"
+    app:destination="@id/RedirectionFragment"
+    app:launchSingleTop="true"
+    />
+
+  <fragment
+    android:id="@+id/RedirectionFragment"
+    android:name="com.ambrozy.fma.presentation.redirection.RedirectionFragment"
+    tools:layout="@layout/redirection_fragment_layout"
+    >
+    <argument
+      android:name="redirectionLink"
+      app:argType="string"
+      app:nullable="false"
+      />
+  </fragment>
+</navigation>

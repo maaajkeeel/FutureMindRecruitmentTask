@@ -1,4 +1,4 @@
-package com.ambrozy.fma.presentation.main
+package com.ambrozy.fma.presentation
 
 import com.ambrozy.data.base.Mapper
 import com.ambrozy.domain.RecipeEntity

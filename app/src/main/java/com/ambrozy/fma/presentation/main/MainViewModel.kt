@@ -6,6 +6,7 @@ import com.ambrozy.data.base.mapAll
 import com.ambrozy.domain.RecipeEntity
 import com.ambrozy.fma.R
 import com.ambrozy.fma.base.BaseViewModel
+import com.ambrozy.fma.presentation.RecipeEntityToDisplayableMapper
 import com.ambrozy.interactors.usecases.GetAllRecipesUseCase
 import com.ambrozy.ui.BR
 import com.ambrozy.ui.displayables.RecipeClickHandler

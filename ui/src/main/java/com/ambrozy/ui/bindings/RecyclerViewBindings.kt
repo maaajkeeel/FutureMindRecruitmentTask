@@ -19,7 +19,7 @@ class RecyclerViewBindings {
   @BindingAdapter(
     "decoratorVerticalMargin",
     "decoratorHorizontalMargin",
-    "orientationHorizontal",
+    "decoratorOrientationHorizontal",
   )
   fun RecyclerView.bindListDecorator(
     verticalMargin: Float,
