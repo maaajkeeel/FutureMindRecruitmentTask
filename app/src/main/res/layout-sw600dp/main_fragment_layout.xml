@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  >
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/white_half"
+      android:elevation="@dimen/margin_xl"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:visible="@{viewModel.loading}"
+      tools:visibility="gone"
+      >
+
+      <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        app:indicatorColor="@color/electric_violet"
+        />
+
+    </FrameLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+      android:id="@+id/tabletContainerView"
+      android:name="androidx.navigation.fragment.NavHostFragment"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:defaultNavHost="false"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/recyclerView"
+      app:layout_constraintTop_toBottomOf="@id/toolbar"
+      app:navGraph="@navigation/tablet_nav"
+      />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView"
+      android:orientation="vertical"
+      android:layout_width="wrap_content"
+      android:layout_height="0dp"
+      app:attachSnapHelper="@{true}"
+      app:decoratorHorizontalMargin="@{0}"
+      app:decoratorVerticalMargin="@{@dimen/margin_s}"
+      app:itemBinding="@{viewModel.recipeListBinding}"
+      app:items="@{viewModel.recipeDisplayables}"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar"
+      app:decoratorOrientationHorizontal="@{true}"
+      tools:listitem="@layout/recipe_list_item"
+      />
+
+    <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorPrimaryDark"
+      app:layout_constraintTop_toTopOf="parent"
+      app:subtitle="@string/fullname_toolbar_subtitle"
+      app:subtitleCentered="true"
+      app:title="@string/futuremind_recruitment_task_toolbar_title"
+      app:titleCentered="true"
+      />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:id="@+id/floatingActionButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin_s"
+      android:contentDescription="@null"
+      android:nestedScrollingEnabled="@{!viewModel.loading}"
+      android:onClick="@{()->viewModel.refreshClicked()}"
+      app:backgroundTint="@color/colorOnAccent"
+      app:iconTint="@color/colorPrimaryDark"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:srcCompat="@drawable/ic_baseline_refresh"
+      />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+  <data>
+    <variable
+      name="viewModel"
+      type="com.ambrozy.fma.presentation.main.MainViewModel"
+      />
+  </data>
+</layout>

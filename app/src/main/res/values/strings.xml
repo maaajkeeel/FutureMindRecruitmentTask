@@ -1,3 +1,10 @@
 <resources>
   <string name="app_name">FutureMindApp</string>
+  <string name="hello_world">Hello World</string>
+  <string name="title_activity_item_detail_host">Item Detail Host Activity</string>
+  <string name="title_item_list">Items</string>
+  <string name="title_item_detail">Item Detail</string>
+  <string name="choose_one_of_the_items">Choose one of the items.</string>
+  <string name="futuremind_recruitment_task_toolbar_title">FutureMind recruitment task!</string>
+  <string name="fullname_toolbar_subtitle">Michał Ambroży</string>
 </resources>

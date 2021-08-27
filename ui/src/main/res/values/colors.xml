@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">@color/cobalt</color>
+  <color name="colorPrimaryDark">@color/blue_berry</color>
+  <color name="colorAccent">@color/electric_violet</color>
+  <color name="colorOnAccent">#F56C3D</color>
+  <color name="colorError">#C21D31</color>
+  <color name="transparent">#00000000</color>
+  <color name="white_half">#80FFFFFF</color>
+
+  <color name="white">#FFF</color>
+  <color name="cobalt">#0A26C2</color>
+  <color name="blue_berry">#071B8F</color>
+  <color name="electric_violet">#7625F5</color>
+
+</resources>

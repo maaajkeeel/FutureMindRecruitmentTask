@@ -30,9 +30,6 @@ pluginManagement {
     val ktlintVersion: String by settings
     id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
 
-    val androidJUnit5Version: String by settings
-    id("de.mannodermaus.android-junit5") version androidJUnit5Version
-
     val hiltVersion: String by settings
     id("dagger.hilt.android.plugin") version hiltVersion
   }
@@ -50,10 +47,6 @@ pluginManagement {
         "androidx.navigation.safeargs.kotlin" -> {
           val navigationCoordinates: String by settings
           useModule(navigationCoordinates)
-        }
-        "de.mannodermaus.android-junit5" -> {
-          val androidJnit5Coordinates: String by settings
-          useModule(androidJnit5Coordinates) // navigationVersion
         }
         "dagger.hilt.android.plugin" -> {
           val hiltCoordinates: String by settings
@@ -82,6 +75,7 @@ dependencyResolutionManagement {
       alias("converter-moshi").to("com.squareup.retrofit2", "converter-moshi").versionRef("retrofit")
       bundle("retrofit", listOf("retrofit-core", "converter-moshi"))
 
+      alias("moshi").to("com.squareup.moshi:moshi:1.12.0")
       alias("moshiCodegen").to("com.squareup.moshi:moshi-kotlin-codegen:1.12.0")
       alias("autoService").to("com.google.auto.service:auto-service-annotations:1.0")
 
@@ -90,6 +84,7 @@ dependencyResolutionManagement {
       alias("okhttp-interceptor").to("com.squareup.okhttp3", "logging-interceptor").versionRef("okhttp")
       bundle("okhttp", listOf("okhttp-okhttp", "okhttp-interceptor"))
 
+      alias("picasso").to("com.squareup.picasso:picasso:2.+")
 
       version("stetho", "1.5.0")
       alias("stetho-core").to("com.facebook.stetho", "stetho").versionRef("stetho")
@@ -100,20 +95,29 @@ dependencyResolutionManagement {
       alias("joda").to("net.danlew:android.joda:2.+")
       alias("constraintlayout").to("androidx.constraintlayout:constraintlayout:2.+")
       alias("coordinatorlayout").to("androidx.coordinatorlayout:coordinatorlayout:1.+")
+      alias("cardview").to("androidx.cardview:cardview:1.+")
       alias("appcompat").to("androidx.appcompat:appcompat:1.+")
       alias("recyclerview").to("androidx.recyclerview:recyclerview:1.+")
       alias("material").to("com.google.android.material:material:1.+")
       alias("play-core").to("com.google.android.play:core:1.+")
 
       alias("core-ktx").to("androidx.core:core-ktx:1.+")
-      alias("fragment-ktx").to("androidx.fragment:fragment-ktx:1.+")
+      alias("fragment-ktx").to("androidx.fragment:fragment-ktx:1.3.+")
       bundle("ktx", listOf("core-ktx", "fragment-ktx"))
 
-      version("lifecycle", "2.+")
+      version("bindingLibVersion", "4.+")
+      alias("bindingBase").to("me.tatarka.bindingcollectionadapter2", "bindingcollectionadapter")
+        .versionRef("bindingLibVersion")
+      alias("bindingRecyclerView").to("me.tatarka.bindingcollectionadapter2", "bindingcollectionadapter-recyclerview")
+        .versionRef("bindingLibVersion")
+      bundle("bindingLib", listOf("bindingBase", "bindingRecyclerView"))
+
+      version("lifecycle", "2.4.0-alpha03")
       alias("viewmodel-ktx").to("androidx.lifecycle", "lifecycle-viewmodel-ktx").versionRef("lifecycle")
       alias("livedata-ktx").to("androidx.lifecycle", "lifecycle-livedata-ktx").versionRef("lifecycle")
       alias("lifecycle-common").to("androidx.lifecycle", "lifecycle-common-java8").versionRef("lifecycle")
-      bundle("lifecycle", listOf("viewmodel-ktx", "livedata-ktx", "lifecycle-common"))
+      alias("lifecycle-ktx").to("androidx.lifecycle", "lifecycle-runtime-ktx").versionRef("lifecycle")
+      bundle("lifecycle", listOf("viewmodel-ktx", "livedata-ktx", "lifecycle-common", "lifecycle-ktx"))
 
       val navigationVersion: String by settings
       version("navigation", navigationVersion)
@@ -143,8 +147,14 @@ dependencyResolutionManagement {
       alias("mockk").to("io.mockk:mockk:1.+")
       alias("arch").to("androidx.arch.core:core-testing:2.+")
 
-      version("junit", "5.+")
-      alias("junit-jupiter-api").to("org.junit.jupiter", "junit-jupiter-api").versionRef("junit")
+      version("junit", "5.7.+")
+      alias("junitJupiter").to("org.junit.jupiter", "junit-jupiter").versionRef("junit")
+
+
+      version("kotest", "4.+")
+      alias("kotestRunner").to("io.kotest", "kotest-runner-junit5-jvm").versionRef("kotest")
+      alias("kotestAssertion").to("io.kotest", "kotest-assertions-core-jvm").versionRef("kotest")
+      alias("kotestProperty").to("io.kotest", "kotest-property-jvm").versionRef("kotest")
 
       bundle(
         "test",
@@ -154,7 +164,7 @@ dependencyResolutionManagement {
           "espresso",
           "mockk",
           "arch",
-          "junit-jupiter-api"
+          "junitJupiter"
         )
       )
 
@@ -162,3 +172,7 @@ dependencyResolutionManagement {
     }
   }
 }
+include(":data")
+include(":domain")
+include(":interactors")
+include(":ui")

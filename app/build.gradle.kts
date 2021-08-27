@@ -1,10 +1,9 @@
 plugins {
   id(GradlePluginId.ANDROID_APPLICATION)
-  id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
-  id(GradlePluginId.KOTLIN_KAPT) // or kotlin("kapt")
+  id(GradlePluginId.KOTLIN_ANDROID)
+  id(GradlePluginId.KOTLIN_KAPT)
   id(GradlePluginId.KTLINT_GRADLE)
   id(GradlePluginId.SAFE_ARGS)
-  id(GradlePluginId.ANDROID_JUNIT_5)
   id(GradlePluginId.HILT)
 }
 
@@ -25,10 +24,12 @@ android {
   buildTypes {
     getByName(BuildType.RELEASE) {
       isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
+      buildConfigField("String", "API_URL", "\"https://recruitment-task.futuremind.dev/\"")
       proguardFiles("proguard-android.txt", "proguard-rules.pro")
     }
 
     getByName(BuildType.DEBUG) {
+      buildConfigField("String", "API_URL", "\"https://recruitment-task.futuremind.dev/\"")
       isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
     }
 
@@ -41,22 +42,31 @@ android {
       targetCompatibility = JavaVersion.VERSION_1_8
     }
   }
-  buildFeatures.viewBinding = true
-  buildFeatures.dataBinding = true
+  buildFeatures {
+    viewBinding = true
+    dataBinding = true
+  }
 
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
   }
 
+  packagingOptions {
+    exclude("META-INF/*")
+  }
+
   kotlinOptions {
     jvmTarget = JavaVersion.VERSION_1_8.toString()
   }
+  testOptions {
+    unitTests.all {
+      it.useJUnitPlatform()
+    }
+  }
 }
+
 dependencies {
-  // Gradle 7 introduces version catalogs - a new way for sharing dependency versions across projects.
-  // Dependencies are defined in gradle.settings.kts file.
-  // False positive cannot access class (fixed in InteliJ IDEA 2021.1 EAP 1 afair)
   api(libs.bundles.kotlin)
   api(libs.bundles.stetho)
   api(libs.bundles.retrofit)
@@ -75,11 +85,19 @@ dependencies {
   api(libs.coroutines)
   api(libs.joda)
   api(libs.hilt.android)
+  api(libs.bundles.bindingLib)
+  api(libs.moshi)
 
   kapt(libs.room.compiler)
   kapt(libs.hilt.compiler)
+  kapt(libs.moshiCodegen)
 
   testImplementation(libs.bundles.test)
-
+  implementation(libs.kotestRunner)
   testRuntimeOnly(libs.junit.jupiter.engine)
+
+  implementation(project(":data"))
+  implementation(project(":domain"))
+  implementation(project(":interactors"))
+  implementation(project(":ui"))
 }
