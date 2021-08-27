@@ -1,18 +1,20 @@
 package com.ambrozy.fma.presentation.main
 
 import com.ambrozy.domain.RecipeEntity
+import com.ambrozy.fma.CoroutinesBehaviorSpec
+import com.ambrozy.fma.getOrAwaitValue
 import com.ambrozy.fma.presentation.RecipeEntityToDisplayableMapper
 import com.ambrozy.interactors.usecases.GetAllRecipesUseCase
-import io.kotest.core.spec.IsolationMode
-import io.kotest.core.spec.style.BehaviorSpec
+import com.ambrozy.ui.displayables.RecipeDisplayable
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-class MainViewModelTest : BehaviorSpec() {
+@ExperimentalCoroutinesApi
+class MainViewModelTest : CoroutinesBehaviorSpec() {
   init {
-    isolationMode = IsolationMode.InstancePerLeaf
     Given("getting all recipes use case is succeeding with list") {
       val givenGetAllRecipesUseCase: GetAllRecipesUseCase = givenGetAllRecipesUseCaseSuccess
 
@@ -21,6 +23,10 @@ class MainViewModelTest : BehaviorSpec() {
 
         Then("recipes are fetched with correct parameter") {
           coVerify { givenGetAllRecipesUseCase.execute(eq(false)) }
+        }
+
+        Then("recipes are attached correctly and well sorted") {
+          viewModel.recipeDisplayables.getOrAwaitValue() shouldBe givenRecipeDisplayables
         }
 
         And("refresh is clicked") {
@@ -55,7 +61,7 @@ class MainViewModelTest : BehaviorSpec() {
 
   private val givenRecipes = listOf(
     RecipeEntity(
-      description = "description",
+      description = "description1",
       imageUrl = "http://url.pl",
       modificationDate = 11L,
       orderId = 1,
@@ -63,7 +69,7 @@ class MainViewModelTest : BehaviorSpec() {
       redirectionLink = "https://redirection.pl"
     ),
     RecipeEntity(
-      description = "description",
+      description = "description0",
       imageUrl = "http://url.pl",
       modificationDate = 11L,
       orderId = 0,
@@ -71,10 +77,34 @@ class MainViewModelTest : BehaviorSpec() {
       redirectionLink = "https://redirection.pl"
     ),
     RecipeEntity(
-      description = "description",
+      description = "description3",
       imageUrl = "http://url.pl",
       modificationDate = 11L,
       orderId = 3,
+      title = "Title",
+      redirectionLink = "https://redirection.pl"
+    )
+  )
+
+  private val givenRecipeDisplayables = listOf(
+    RecipeDisplayable(
+      description = "description0",
+      imageUrl = "http://url.pl",
+      modificationDate = 11L,
+      title = "Title",
+      redirectionLink = "https://redirection.pl"
+    ),
+    RecipeDisplayable(
+      description = "description1",
+      imageUrl = "http://url.pl",
+      modificationDate = 11L,
+      title = "Title",
+      redirectionLink = "https://redirection.pl"
+    ),
+    RecipeDisplayable(
+      description = "description3",
+      imageUrl = "http://url.pl",
+      modificationDate = 11L,
       title = "Title",
       redirectionLink = "https://redirection.pl"
     )
